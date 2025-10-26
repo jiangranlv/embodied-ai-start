@@ -105,25 +105,30 @@ https://playground.mujoco.org/
 
 ### 1. Grasping
 
-抓取（**Grasping**）是机器人学中最基础且最重要的任务之一。
+抓取（**Grasping**）是机器人学中最基础且最重要的任务之一，通常指让机器人末端牢牢抓紧物体以达到力闭合（**force closure**），成功完成抓取后可将物体视作机器人的一部分进行后续的移动和操作。
 
-狭义上通常指 **tabletop grasping**（如 power grasp），而广义上还包括 **clutter scene grasping**（如 FetchBench）、**functional grasping** 以及 **handover**。这里主要介绍 **tabletop grasping** 的主流方案。
+常见任务有（难度依次递增）：
+- **Single object grasping（单物体抓取）**：抓取一个物体，物体通常放在桌子上。
+- **Clutter scene grasping（堆叠场景抓取）**：抓取堆叠场景中的物体，通常要求清台（全部抓完）。难点在物体的互相遮挡和干扰。
+- **Functional grasping（带语义抓取）**：根据语言指令进行抓取。对于单物体抓取而言，语言通常指定物体要抓的part和抓取的手势；对于堆叠场景而言，还可以指定要抓的物体。难点在语言模态的引入。
 
-- **Open-loop Methods（开环执行）**：通过一次性预测抓取位姿并直接执行，不依赖执行过程中的感知反馈。可以直观理解为“看一次决定怎么抓”，执行时全程不再依赖视觉，仅依靠运动规划达到目标位姿。因此开环方法的核心是 **grasping pose estimation**。**Data Source**：Grasp Synthesis，如 DexNet、GraspNet-1B. **Learning Approaches**：GSNet
-- **Closed-loop Methods（闭环执行）**：在执行过程中持续使用视觉或触觉反馈进行动态调整，从而提升抓取的鲁棒性。这类闭环模型可视为 **policy**，持续输入视觉信息并输出机械臂动作。代表工作：**GraspVLA**。
+常用机械手末端有（难度依次递增）：
+- **Suction cup（吸盘）**：控制维度最低，除了末端整体的旋转和平移的自由度之外，只有是否施加吸力的0/1控制信号。
+- **Parallel gripper（平行夹抓）**：类似吸盘。学术上通常认为吸盘/平行夹抓+堆叠场景抓取已经被DexNet和GraspNet两个系列工作几乎解决（思路：大规模仿真抓取位姿 + 学习位姿预测网络 + sim2real）
+- **Multi-fingered hand（多指手）**，又称**Dexterous hand（灵巧手）**：更高的可控自由度和更高的潜力，但也极大地增加了数据构造与学习的难度，导致其发展远落后于前两者。大规模仿真抓取位姿的进展/Dataset：DexGraspNet、Dexonomy（覆盖多样化手型）。
 
-**Dexterous Grasping（多指抓取）**：整体范式与二指抓取相似，但挑战在于高维手型空间下的抓取生成，数据构造与学习难度更大。
-
-- **Datasets**：DexGraspNet、Dexonomy（覆盖多样化手型）
+常见的做法：
+- **Open-loop methods（开环执行）**：通过一次性预测抓取位姿并直接执行，不依赖执行过程中的感知反馈。可以直观理解为“看一次决定怎么抓”，执行时全程不再依赖视觉，仅依靠运动规划达到目标位姿。因此开环方法的核心是 **grasping pose estimation**。**Data Source**：Grasp Synthesis，如 DexNet、GraspNet-1B. **Learning Approaches**：GSNet
+- **Closed-loop methods（闭环执行）**：在执行过程中持续使用视觉或触觉反馈进行动态调整，从而提升抓取的鲁棒性。这类闭环模型可视为 **policy**，持续输入视觉信息并输出机械臂动作。代表工作：**GraspVLA**。
 
 ### 2. Manipulation
 
-操作（**Manipulation**）强调机器人与物体交互以实现特定目标。
+操作（**Manipulation**）比抓取的含义更广，允许手和物体间有频繁的接触点变化，不像抓取任务中接触点形成后就固定不变了。通常只要是改变了物体状态的任务就可以叫操作。
 
-- **Articulated Object Manipulation**：铰链物体操作（如开门、拉抽屉、开柜子）。该任务涉及以下能力：1.Part理解（GAPartNet）2.抓取（Grasping）3.抓取后的操作轨迹规划 4.拉取力度控制（Impedance Control）
-- **Deformable Object Manipulation**：柔性物体操作（如叠衣服、挂衣服）。难点在于柔性物体自由度高、难以精确建模，传统方法难以通用，因此成为 **learning-based（数据驱动）** 方法的优势领域。（注：此类任务具有强商业价值和落地潜力。）
+- **Articulated Object Manipulation**：铰链物体操作（如开门、拉抽屉、开柜子）。该类任务通常被简化成抓取任务来处理：1.Part理解（GAPartNet）2.抓取（Grasping）3.抓取后的操作轨迹规划 4.拉取力度控制（Impedance Control）
+- **Deformable Object Manipulation**：柔性物体操作（如叠衣服、挂衣服）。难点在于柔性物体自由度极高、难以精确建模和仿真。常见做法通常基于人工设计的原子操作（action primitives），最近也有一些公司（pai，dyna）开始用数采+端到端学习的方式来直接做。
 - **Non-prehensile Manipulation**：非抓握操作，指通过推、拨、翻转等方式在无抓握的情况下操控物体至指定姿态。难点在于 **contact-rich** 的动力学特性，机器人、物体与环境存在多重接触与碰撞，如何生成成功的操作轨迹是当前研究重点。
-- **Dexterous Manipulation**：灵巧操作，与上类似，同样属于 contact-rich 操作，并存在遮挡（occlusion）等难题。
+- **Dexterous Manipulation**：灵巧操作，与non-prehensile类似，但通常有更多的contact和更高的控制维度。一个经典的任务是in-hand reorientation，虽然它已经几乎被RL解决，但如何提升学习效率、拓展到更一般的灵巧操作任务上依旧是研究难点。
 - **Bimanual Manipulation**：双臂操作，重点在于如何实现双臂的协调与配合。
 - **Mobile Manipulation**：移动操作，强调移动系统为操作提供更大、更灵活的工作空间，移动如何为操作服务，两者如何协同
 
