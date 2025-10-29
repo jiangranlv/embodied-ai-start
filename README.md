@@ -35,9 +35,9 @@
 具身智能与传统 AI 的主要区别在于它的**主动性、交互性，以及对数据的依赖方式**。传统 AI 可以利用互联网上丰富的图像、文本、语音等大规模数据集进行训练（参考LLM的成功），而具身智能体必须通过与环境的真实交互来收集数据，这使得数据获取代价高昂且规模有限。一言以蔽之，数据问题是具身智能目前最大的bottleneck。那么很自然的两个关键问题是，
 
 - 如何scale up机器人数据？
-例如：GraspVLA（在仿真中以合成的方式猛猛造）, pi0和AgiBot-World（在真实世界猛猛遥操采）, UMI和AirExo（可穿戴设备，如外骨骼的高效数据采集装置）
+例如：[GraspVLA](https://pku-epic.github.io/GraspVLA-web/)（在仿真中以合成的方式猛猛造）, [pi0](https://www.physicalintelligence.company/blog/pi0)和[AgiBot-World](https://agibot-world.com/)（在真实世界猛猛遥操采）, [UMI](https://umi-gripper.github.io/)和[AirExo](https://airexo.github.io/)（可穿戴设备，如外骨骼的高效数据采集装置）
 - 在不能scale up机器人数据的情况下，如何利用好已有的数据实现你的目的？
-例如：Diffusion Policy (100条机器人数据训一个特定任务的policy）, Being-H0（利用human video参与policy训练）
+例如：[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/) (100条机器人数据训一个特定任务的policy）, [Being-H0](https://arxiv.org/pdf/2507.15597)（利用human video参与policy训练），[MimicGen](https://mimicgen.github.io/)、[DemoGen](https://demo-generation.github.io/)、[Robosplat](https://yangsizhe.github.io/robosplat/)（从一条机器人轨迹中augment得到更多数据）
 
 ### 3. 研究具身智能的核心原则 (Core Principles)
 
@@ -114,18 +114,18 @@ https://playground.mujoco.org/
 
 常用机械手末端有（难度依次递增）：
 - **Suction cup（吸盘）**：控制维度最低，除了末端整体的旋转和平移的自由度之外，只有是否施加吸力的0/1控制信号。
-- **Parallel gripper（平行夹抓）**：类似吸盘。学术上通常认为吸盘/平行夹抓+堆叠场景抓取已经被DexNet和GraspNet两个系列工作几乎解决（思路：大规模仿真抓取位姿 + 学习位姿预测网络 + sim2real）
-- **Multi-fingered hand（多指手）**，又称**Dexterous hand（灵巧手）**：更高的可控自由度和更高的潜力，但也极大地增加了数据构造与学习的难度，导致其发展远落后于前两者。大规模仿真抓取位姿的进展/Dataset：DexGraspNet、Dexonomy（覆盖多样化手型）。
+- **Parallel gripper（平行夹抓）**：类似吸盘。学术上通常认为吸盘/平行夹抓+堆叠场景抓取已经被[DexNet](https://arxiv.org/pdf/1703.09312)和[GraspNet](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fang_GraspNet-1Billion_A_Large-Scale_Benchmark_for_General_Object_Grasping_CVPR_2020_paper.pdf)两个系列工作几乎解决（思路：大规模仿真抓取位姿 + 学习位姿预测网络 + sim2real）
+- **Multi-fingered hand（多指手）**，又称**Dexterous hand（灵巧手）**：更高的可控自由度和更高的潜力，但也极大地增加了数据构造与学习的难度，导致其发展远落后于前两者。大规模仿真抓取位姿的进展/Dataset：[DexGraspNet](https://pku-epic.github.io/DexGraspNet/)、[Dexonomy](https://arxiv.org/pdf/2504.18829)（覆盖多样化手型）。
 
 常见的做法：
-- **Open-loop methods（开环执行）**：通过一次性预测抓取位姿并直接执行，不依赖执行过程中的感知反馈。可以直观理解为“看一次决定怎么抓”，执行时全程不再依赖视觉，仅依靠运动规划达到目标位姿。因此开环方法的核心是 **grasping pose estimation**。**Data Source**：Grasp Synthesis，如 DexNet、GraspNet-1B. **Learning Approaches**：GSNet
-- **Closed-loop methods（闭环执行）**：在执行过程中持续使用视觉或触觉反馈进行动态调整，从而提升抓取的鲁棒性。这类闭环模型可视为 **policy**，持续输入视觉信息并输出机械臂动作。代表工作：**GraspVLA**。
+- **Open-loop methods（开环执行）**：通过一次性预测抓取位姿并直接执行，不依赖执行过程中的感知反馈。可以直观理解为“看一次决定怎么抓”，执行时全程不再依赖视觉，仅依靠运动规划达到目标位姿。因此开环方法的核心是 **grasping pose estimation**。**Data Source**：Grasp Synthesis，如 [DexNet](https://arxiv.org/pdf/1703.09312)、[GraspNet-1B](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fang_GraspNet-1Billion_A_Large-Scale_Benchmark_for_General_Object_Grasping_CVPR_2020_paper.pdf). **Learning Approaches**：GSNet。
+- **Closed-loop methods（闭环执行）**：在执行过程中持续使用视觉或触觉反馈进行动态调整，从而提升抓取的鲁棒性。这类闭环模型可视为 **policy**，持续输入视觉信息并输出机械臂动作。代表工作：[GraspVLA](https://pku-epic.github.io/GraspVLA-web/)。
 
 ### 2. Manipulation
 
 操作（**Manipulation**）比抓取的含义更广，允许手和物体间有频繁的接触点变化，不像抓取任务中接触点形成后就固定不变了。通常只要是改变了物体状态的任务就可以叫操作。
 
-- **Articulated Object Manipulation**：铰链物体操作（如开门、拉抽屉、开柜子）。该类任务通常被简化成抓取任务来处理：1.Part理解（GAPartNet）2.抓取（Grasping）3.抓取后的操作轨迹规划 4.拉取力度控制（Impedance Control）
+- **Articulated Object Manipulation**：铰链物体操作（如开门、拉抽屉、开柜子）。该类任务通常被简化成抓取任务来处理：1.Part理解（[GAPartNet](https://pku-epic.github.io/GAPartNet/)）2.抓取（Grasping）3.抓取后的操作轨迹规划 4.拉取力度控制（Impedance Control）
 - **Deformable Object Manipulation**：柔性物体操作（如叠衣服、挂衣服）。难点在于柔性物体自由度极高、难以精确建模和仿真。常见做法通常基于人工设计的原子操作（action primitives），最近也有一些公司（pai，dyna）开始用数采+端到端学习的方式来直接做。
 - **Non-prehensile Manipulation**：非抓握操作，指通过推、拨、翻转等方式在无抓握的情况下操控物体至指定姿态。难点在于 **contact-rich** 的动力学特性，机器人、物体与环境存在多重接触与碰撞，如何生成成功的操作轨迹是当前研究重点。
 - **Dexterous Manipulation**：灵巧操作，与non-prehensile类似，但通常有更多的contact和更高的控制维度。一个经典的任务是in-hand reorientation，虽然它已经几乎被RL解决，但如何提升学习效率、拓展到更一般的灵巧操作任务上依旧是研究难点。
@@ -180,8 +180,8 @@ https://playground.mujoco.org/
 
 该方向主要聚焦于 **小模型 (small-model)** 场景：在给定数量有限的机器人轨迹数据集上，学习一个策略 (policy) 来完成特定任务，并在一定范围内实现泛化，例如在同一张桌面上对不同物体的泛化操控。
 
-- **传统方法**：Behavior Cloning、DAgger
-- **当前主流方法**：**ACT**、**Diffusion Policy**
+- **传统方法**：[Behavior Cloning](https://cgi.cse.unsw.edu.au/~claude/papers/MI15.pdf)、[DAgger](https://arxiv.org/abs/1011.0686)
+- **当前主流方法**：[ACT](https://tonyzhaozh.github.io/aloha/)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/)
     
     这些方法通过引入时序建模与生成式策略学习，有效提升了模仿学习在视觉控制任务中的表现。
     
@@ -193,10 +193,10 @@ https://playground.mujoco.org/
 该方向属于 **大模型 (foundation model)** 范式，旨在将视觉、语言与动作建模统一在同一框架下，实现通用的具身智能。
 
 - **代表性工作**：
-    - **OpenVLA**：第一个开源且易于follow的VLA。
-    - **Pi0 / Pi0.5**：目前公认最work的VLA，10K+ hours teleop data训练的。
-    - **GraspVLA**：基于纯仿真数据的抓取任务的VLA。
-    - **RDT**：纯diffusion的VLA架构
+    - [OpenVLA](https://openvla.github.io/)：第一个开源且易于follow的VLA。
+    - [Pi0](https://www.physicalintelligence.company/blog/pi0) / [Pi0.5](https://www.physicalintelligence.company/blog/pi05)：目前公认最work的VLA，10K+ hours teleop data训练的。
+    - [GraspVLA](https://pku-epic.github.io/GraspVLA-web/)：基于纯仿真数据的抓取任务的VLA。
+    - [RDT](https://rdt-robotics.github.io/rdt-robotics/)：纯diffusion的VLA架构
 
 ---
 
