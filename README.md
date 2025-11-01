@@ -148,7 +148,7 @@ https://playground.mujoco.org/
 - **Map-based Navigation**, 基于地图的导航算法会利用深度图，里程计等信息构建地图，从而基于地图规划路径完成导航任务。基于地图的方法在静态或者易结构化的场景下表现非常好。相关工作包括: [Object Goal Navigation using Goal-Oriented Semantic Exploration
 ](https://arxiv.org/abs/2007.00643)
 - **Prompting-Large-Model Navigation**，通过对物理世界进行解释得到prompting，然后以现成（off-the-shelf）的大模型作为规划决策的中心。这种方法不需要训练复杂的大模型，且可以利用大模型的智能优势实现复杂的导航任务。相关工作包括: [NavGPT](https://arxiv.org/abs/2305.16986), [CogNav](https://yhancao.github.io/CogNav/)
-- **Video-based VLM Navigation**, 通过端到端训练基于视频输入的视觉语言大模型，通过tokens来建模导航历史，和用VLM直接输出未来导航动作。相关工作[NaVid: Video-based VLM Plans the Next Step for Vision-and-Language Navigation](https://pku-epic.github.io/NaVid/)
+- **Video-based VLM Navigation**, 通过端到端训练基于视频输入的视觉语言大模型，通过tokens来建模导航历史，和用VLM直接输出未来导航动作。相关工作[NaVid](https://pku-epic.github.io/NaVid/)
 
 **Unified Embodied Navigation**：最新研究趋势是将多种导航任务统一建模，常使用纯RGB输入，并将目标描述转换为语言指令。代表性工作：**[Uni-Navid](https://pku-epic.github.io/Uni-NaVid/)**，统一多种导航任务。**[NavFoM](https://pku-epic.github.io/NavFoM-Web/)**,统一导航任务和embodiment。
 
