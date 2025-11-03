@@ -189,9 +189,10 @@ https://playground.mujoco.org/
 ### 2. Scaling Imitation Learning 
 
 该方向属于 **大模型 (foundation model)** 范式，目前主流的做法是Vision-Language-Action Models (VLA), 借助VLM的预训练知识将视觉、语言与动作建模统一在同一框架下，实现通用泛化的机器人技能。代表性工作：
-    - [OpenVLA](https://openvla.github.io/)：第一个开源且易于follow的VLA。
-    - [Pi0](https://www.physicalintelligence.company/blog/pi0) / [Pi0.5](https://www.physicalintelligence.company/blog/pi05)：目前公认最work的VLA，10K+ hours teleop data训练的。
-    - [GraspVLA](https://pku-epic.github.io/GraspVLA-web/)：基于纯仿真数据的抓取任务的VLA。
+
+- [OpenVLA](https://openvla.github.io/)：第一个开源且易于follow的VLA。
+- [Pi0](https://www.physicalintelligence.company/blog/pi0) / [Pi0.5](https://www.physicalintelligence.company/blog/pi05)：目前公认最work的VLA，10K+ hours teleop data训练的。
+- [GraspVLA](https://pku-epic.github.io/GraspVLA-web/)：基于纯仿真数据的抓取任务的VLA。
 
 还有少量工作没有借助VLM，单纯靠机器人数据做scaling，代表有RDT-1B和Large Behavior Model (LBM)
 
