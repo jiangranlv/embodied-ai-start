@@ -28,11 +28,11 @@
 
 - 拥有多模态感知能力（视觉、触觉、语音等）
 - 能够执行动作并影响环境
-- 学习往往是通过**与环境交互**而不是被动监督完成的
+- 学习可以通过**与环境交互**而不仅仅是被动监督完成
 
 ### 2. 具身智能与其他AI的区别 (Differences from Traditional AI)
 
-具身智能与传统 AI 的主要区别在于它的**主动性、交互性，以及对数据的依赖方式**。传统 AI 可以利用互联网上丰富的图像、文本、语音等大规模数据集进行训练（参考LLM的成功），而具身智能体必须通过与环境的真实交互来收集数据，这使得数据获取代价高昂且规模有限。一言以蔽之，数据问题是具身智能目前最大的bottleneck。那么很自然的两个关键问题是，
+具身智能与传统 AI 的主要区别在于它的**主动性、交互性，以及对动作数据的依赖**。传统 AI 可以利用互联网上丰富的图像、文本、语音等大规模数据集进行训练（参考LLM的成功），而具身智能体所需的动作数据必须通过与环境的真实交互来收集，这使得数据获取代价高昂且规模有限。一言以蔽之，数据问题是具身智能目前最大的bottleneck。那么很自然的两个关键问题是，
 
 - 如何scale up机器人数据？
 例如：[GraspVLA](https://pku-epic.github.io/GraspVLA-web/)（在仿真中以合成的方式猛猛造）, [pi0](https://www.physicalintelligence.company/blog/pi0)和[AgiBot-World](https://agibot-world.com/)（在真实世界猛猛遥操采）, [UMI](https://umi-gripper.github.io/)和[AirExo](https://airexo.github.io/)（可穿戴设备，如外骨骼的高效数据采集装置）
@@ -81,7 +81,7 @@ Berkeley的RL课程，涵盖了Imitation Learning，Online RL, Offline RL等Poli
 
 **对于simulation的掌握**：需要至少一种simulation框架，通过阅读tutorial跑他的example，加深对robotics的理解，不要等到上真机才发现有很多坑，会有很大的安全隐患
 
-IssacLab （Recommand)
+IssacLab (Recommend)
 
 https://isaac-sim.github.io/IsaacLab/main/index.html
 
@@ -172,7 +172,7 @@ https://playground.mujoco.org/
 - 强调一些特殊的capability（比如HuB做极端平衡，Any2Track受很大的力干扰摔不倒, Hitter做一个特殊的乒乓球task，spi-active做sim2real对齐让机器人能走直线）
 
 
-## 六、基于learning的主流方案
+## 六、基于learning的主要研究方向
 
 ### 1. Imitation Learning
 
@@ -219,6 +219,7 @@ https://playground.mujoco.org/
 
 ---
 
+
 ### 5. World Models
 
 **World Model** 最早起源于 **基于模型的强化学习 (Model-based RL)**，旨在通过内部世界建模来提升采样效率。
@@ -254,11 +255,13 @@ https://playground.mujoco.org/
     用于精确追踪人体或机器人位姿，常用于收集示教数据或标定
     
 
-### 3. Advanced Model
+### 3. Models
 
-Transformer
+- **Transformer**
+    
 
-Diffusion Model
+- **Diffusion、Flow Matching**
+    由于能够有效建模多峰分布的生成模型sota。
 
 ### 4. Foundation Models
 - **LLM（Large Language Model）**
@@ -289,9 +292,9 @@ Diffusion Model
 
 ## 八、(Optional) 科研工作中的必备能力
 
-Sharp Mind：戳穿别人工作的包装，看到本质<br>
-Writing and Presentation： 包装自己的工作，别让别人拆穿<br>
-Warm Mind：不要一味的批评别人的工作，能够欣赏到别人的亮点<br>
+- Sharp Mind：戳穿别人工作的包装，看到本质<br>
+- Writing and Presentation： 包装自己的工作，别让别人拆穿<br>
+- Warm Mind：不要一味的批评别人的工作，能够欣赏到别人的亮点<br>
 
 ## 相关仓库
 https://github.com/TianxingChen/Embodied-AI-Guide
