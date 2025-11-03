@@ -32,7 +32,7 @@
 
 ### 2. 具身智能与其他AI的区别 (Differences from Traditional AI)
 
-具身智能与传统 AI 的主要区别在于它的**主动性、交互性，以及对动作数据的依赖**。传统 AI 可以利用互联网上丰富的图像、文本、语音等大规模数据集进行训练（参考LLM的成功），而具身智能体所需的动作数据并不像图像、文本等有大规模的记录，且与本体强相关，必须通过与环境的真实交互来收集数据，这使得数据获取代价高昂且规模有限。一言以蔽之，数据问题是具身智能目前最大的bottleneck。那么很自然的两个关键问题是，
+具身智能与传统 AI 的主要区别在于它的**主动性、交互性，以及对动作数据的依赖**。传统 AI 可以利用互联网上丰富的图像、文本、语音等大规模数据集进行训练（参考LLM的成功），而具身智能体所需的动作数据必须通过与环境的真实交互来收集，这使得数据获取代价高昂且规模有限。一言以蔽之，数据问题是具身智能目前最大的bottleneck。那么很自然的两个关键问题是，
 
 - 如何scale up机器人数据？
 例如：[GraspVLA](https://pku-epic.github.io/GraspVLA-web/)（在仿真中以合成的方式猛猛造）, [pi0](https://www.physicalintelligence.company/blog/pi0)和[AgiBot-World](https://agibot-world.com/)（在真实世界猛猛遥操采）, [UMI](https://umi-gripper.github.io/)和[AirExo](https://airexo.github.io/)（可穿戴设备，如外骨骼的高效数据采集装置）
@@ -208,7 +208,7 @@ https://playground.mujoco.org/
 
 ---
 
-### 3. Real-World Reinforcement Learning
+### 4. Real-World Reinforcement Learning
 
 **Real-world RL** 指直接在现实环境中进行探索式学习。
 
@@ -220,7 +220,7 @@ https://playground.mujoco.org/
 ---
 
 
-### 4. World Models
+### 5. World Models
 
 **World Model** 最早起源于 **基于模型的强化学习 (Model-based RL)**，旨在通过内部世界建模来提升采样效率。
 
