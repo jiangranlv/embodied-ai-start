@@ -257,11 +257,11 @@ https://playground.mujoco.org/
 
 ### 3. Models
 
-- **Transformer-based LLMs and VLMs**
-    当前大部分具身智能模型基于预训练的 LLM/VLM，而 LLM/VLM 大多基于 transformer 架构，熟练掌握它们的基本结构、了解它们如何处理多模态输入、attention 机制如何工作等非常重要。
+- **Transformer**
+    
 
 - **Diffusion、Flow Matching**
-    由于能够有效建模多峰分布及提高推理速度，在 VLA 模型架构中被广泛采用。
+    由于能够有效建模多峰分布的生成模型sota。
 
 ### 4. Foundation Models
 - **LLM（Large Language Model）**
@@ -292,9 +292,9 @@ https://playground.mujoco.org/
 
 ## 八、(Optional) 科研工作中的必备能力
 
-- Sharp Mind：戳穿别人工作的包装，看到本质
-- Writing and Presentation： 包装自己的工作，别让别人拆穿
-- Warm Mind：不要一味的批评别人的工作，能够欣赏到别人的亮点
+- Sharp Mind：戳穿别人工作的包装，看到本质<br>
+- Writing and Presentation： 包装自己的工作，别让别人拆穿<br>
+- Warm Mind：不要一味的批评别人的工作，能够欣赏到别人的亮点<br>
 
 ## 相关仓库
 https://github.com/TianxingChen/Embodied-AI-Guide
