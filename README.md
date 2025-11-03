@@ -198,7 +198,7 @@ https://playground.mujoco.org/
 
 ---
 
-### 2. Sim-to-Real Reinforcement Learning (Distillation)
+### 3. Sim-to-Real Reinforcement Learning (Distillation)
 
 **从仿真到真实 (Sim-to-Real)** 是强化学习在具身智能中的关键挑战之一。
 
@@ -219,19 +219,8 @@ https://playground.mujoco.org/
 
 ---
 
-### 4. Vision-Language-Action Models (VLA)
 
-该方向属于 **大模型 (foundation model)** 范式，旨在将视觉、语言与动作建模统一在同一框架下，实现通用的具身智能。
-
-- **代表性工作**：
-    - **OpenVLA**：第一个开源且易于follow的VLA。
-    - **Pi0 / Pi0.5**：目前公认最work的VLA，10K+ hours teleop data训练的。
-    - **GraspVLA**：基于纯仿真数据的抓取任务的VLA。
-    - **RDT**：纯diffusion的VLA架构
-
----
-
-### 5. World Models
+### 4. World Models
 
 **World Model** 最早起源于 **基于模型的强化学习 (Model-based RL)**，旨在通过内部世界建模来提升采样效率。
 
