@@ -293,9 +293,7 @@ https://playground.mujoco.org/
 ## 八、(Optional) 科研工作中的必备能力
 
 Sharp Mind：戳穿别人工作的包装，看到本质
-
 Writing and Presentation： 包装自己的工作，别让别人拆穿
-
 Warm Mind：不要一味的批评别人的工作，能够欣赏到别人的亮点
 
 ## 相关仓库
