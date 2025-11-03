@@ -174,9 +174,9 @@ https://playground.mujoco.org/
 
 ## 六、基于learning的主要研究方向
 
-### 1. Imitation Learning
+### 1. Few-shot Imitation Learning
 
-该方向主要聚焦于 **小模型 (small-model)** 场景：在给定数量有限的机器人轨迹数据集上，学习一个策略 (policy) 来完成特定任务，并在一定范围内实现泛化，例如在同一张桌面上对不同物体的泛化操控。
+该方向主要聚焦于 **小模型 (small-model)** 场景：在给定数量有限的机器人轨迹数据集上，学习一个策略 (policy) 来完成特定任务，并在一定范围内实现泛化，例如在同一张桌面上对同一物体的不同初始位置泛化。
 
 - **传统方法**：[Behavior Cloning](https://cgi.cse.unsw.edu.au/~claude/papers/MI15.pdf)、[DAgger](https://arxiv.org/abs/1011.0686)
 - **当前主流方法**：[ACT](https://tonyzhaozh.github.io/aloha/)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/)
@@ -186,15 +186,16 @@ https://playground.mujoco.org/
 
 ---
 
-### 2. Vision-Language-Action Models (VLA)
+### 2. Scaling Imitation Learning 
 
-该方向属于 **大模型 (foundation model)** 范式，旨在将视觉、语言与动作建模统一在同一框架下，实现通用的具身智能。
+该方向属于 **大模型 (foundation model)** 范式，目前主流的做法是Vision-Language-Action Models (VLA), 借助VLM的预训练知识将视觉、语言与动作建模统一在同一框架下，实现通用泛化的机器人技能。
 
 - **代表性工作**：
     - [OpenVLA](https://openvla.github.io/)：第一个开源且易于follow的VLA。
     - [Pi0](https://www.physicalintelligence.company/blog/pi0) / [Pi0.5](https://www.physicalintelligence.company/blog/pi05)：目前公认最work的VLA，10K+ hours teleop data训练的。
     - [GraspVLA](https://pku-epic.github.io/GraspVLA-web/)：基于纯仿真数据的抓取任务的VLA。
-    - [RDT](https://rdt-robotics.github.io/rdt-robotics/)：纯diffusion的VLA架构
+
+目前还有少量工作没有借助VLM，单纯靠机器人数据做scaling，目前有RDT-1B和Large Behavior Model (LBM)
 
 ---
 
@@ -202,7 +203,7 @@ https://playground.mujoco.org/
 
 **从仿真到真实 (Sim-to-Real)** 是强化学习在具身智能中的关键挑战之一。
 
-目前最成功的落地应用集中在 **Locomotion（运动控制）**，而在 **Manipulation（操作任务）** 上仍较少见。
+目前最成功的落地应用集中在 **Locomotion（运动控制）**，而在 **Manipulation（操作任务）** 上仍面临sim2real Gap过大的问题。
 
 核心思路通常包括 **策略蒸馏 (policy distillation)**、**域随机化 (domain randomization)** 与 **现实校准 (real calibration)** 等技术。
 
