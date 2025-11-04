@@ -176,7 +176,7 @@ https://playground.mujoco.org/
 
 ### 1. Few-shot Imitation Learning
 
-该方向主要聚焦于 **小模型 (small-model)** 场景：在给定数量有限的机器人轨迹数据集上，学习一个策略 (policy) 来完成特定任务，并在一定范围内实现泛化，例如在同一张桌面上对同一物体的不同初始位置泛化。
+该方向主要聚焦于 **小模型 (small-model)** 场景：给定一个特定任务，以及数量有限的专家轨迹数据集（比如50条轨迹），学习一个策略来模仿专家轨迹完成任务。能够在一定范围内实现泛化，例如在同一张桌面上对同一物体的不同初始位置泛化。
 
 - **传统方法**：[Behavior Cloning](https://cgi.cse.unsw.edu.au/~claude/papers/MI15.pdf)、[DAgger](https://arxiv.org/abs/1011.0686)
 - **当前主流方法**：[ACT](https://tonyzhaozh.github.io/aloha/)、[Diffusion Policy](https://diffusion-policy.cs.columbia.edu/)
@@ -256,7 +256,7 @@ https://playground.mujoco.org/
     用于精确追踪人体或机器人位姿，常用于收集示教数据或标定
     
 
-### 3. Models
+### 3. Mainstream Models
 
 - **Transformer**
     
