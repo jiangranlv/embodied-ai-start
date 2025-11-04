@@ -186,9 +186,10 @@ https://playground.mujoco.org/
 
 ---
 
-### 2. Scaling Imitation Learning 
+### 2. Robot Foundation Model 
 
-该方向属于 **大模型 (foundation model)** 范式，目前主流的做法是Vision-Language-Action Models (VLA), 借助VLM的预训练知识将视觉、语言与动作建模统一在同一框架下，实现通用泛化的机器人技能。代表性工作：
+该方向属于 **大模型 (foundation model)** 范式，旨在通过统一的模型架构与大规模数据学习，使机器人具备跨任务、跨场景、跨模态的泛化能力。不同于传统在特定任务上单独训练的策略模型，这类模型试图构建“通用机器人智能（generalist robot）”，让机器人能够像语言模型一样，通过大规模预训练与下游微调实现“涌现式”的智能行为。<br>
+目前主流的做法是Vision-Language-Action Models (VLA), 借助VLM的预训练知识将视觉、语言与动作建模统一在同一框架下。代表性工作：
 
 - [OpenVLA](https://openvla.github.io/)：第一个开源且易于follow的VLA。
 - [Pi0](https://www.physicalintelligence.company/blog/pi0) / [Pi0.5](https://www.physicalintelligence.company/blog/pi05)：目前公认最work的VLA，10K+ hours teleop data训练的。
