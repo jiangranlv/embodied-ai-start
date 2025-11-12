@@ -158,18 +158,18 @@ https://playground.mujoco.org/
 
 技术路线上，2019年以前主要靠传统的MPC控制实现（例如波士顿动力），目前主流的方法是Sim2Real RL, 以下主要讨论这类主流范式。
 既然谈及RL，又分为
-- **Learning from manually designed reward** (自己写reward提供desired behavior) ([WoCoCo](https://arxiv.org/pdf/2406.06005)【任务目的：通过reward设计让机器人完成某些特定任务】
-- **Learning from human data** (data提供desired behavior，也叫做tracking)【主流】 (ASAP)【任务目的：模仿某一段人类数据中的动作（输入：现在的state和目标的state；输出这一步的action）】
+- **Learning from manually designed reward** 自己写reward提供desired behavior, 例如[WoCoCo](https://arxiv.org/pdf/2406.06005)----任务目的：通过reward设计让机器人完成某些特定任务
+- **Learning from human data** (data提供desired behavior，也叫做tracking，例如[ASAP](https://agile.human2humanoid.com/))----任务目的：模仿某一段人类数据中的动作（输入：现在的state和目标的state；输出这一步的action）
 
 如果人形机器人能完成对特定人类动作的tracking，那么接下来就有了一个很主流的研究方向，general motion tracking -> whole-body teleopration，人在做任何一段动作的时候，机器人可以复现人的动作（这里的难点就很多了，动作输入形式的多样性，减少延时，长程复现人的动作，复现的精准度）
 这一系列的工作是H2O, OmniH2O, HOMIE, TWIST, CLONE, HOVER, GMT, Unitrack等等，至此Control最基本的问题应该well-defined了
 
 下一个阶段会涉及到一点除了control之外的东西，就是
-- 引入【视觉】实现户外自主化（perceptive locomotion）；例如，根据视觉来进行上楼梯，迈台阶，难点：vision sim2real 【visualmimic】
-- 引入【物体】实现loco-manipulation；例如人型机器人搬箱子，难点：物体的dynamics【HDMI】
+- 引入【视觉】实现户外自主化（perceptive locomotion）；例如，根据视觉来进行上楼梯，迈台阶，难点：vision sim2real [VisualMimic](https://visualmimic.github.io/)
+- 引入【物体】实现loco-manipulation；例如人型机器人搬箱子，难点：物体的dynamics. [HDMI](https://hdmi-humanoid.github.io/#/)
 - 对上述两种task的组合
-- 强调【语义的泛化性】，希望能根据各种各样的场景/物体【自主决策】做出相应的动作（whole body VLA）【leverb】
-- 强调一些特殊的capability（比如HuB做极端平衡，Any2Track受很大的力干扰摔不倒, Hitter做一个特殊的乒乓球task，spi-active做sim2real对齐让机器人能走直线）
+- 强调【语义的泛化性】，希望能根据各种各样的场景/物体【自主决策】做出相应的动作（whole body VLA）[LeVERB](https://ember-lab-berkeley.github.io/LeVERB-Website/)
+- 强调一些特殊的capability（比如[HuB](https://hub-robot.github.io/)做极端平衡，[Any2Track](https://zzk273.github.io/Any2Track/)受很大的力干扰摔不倒, [HITTER](https://humanoid-table-tennis.github.io/)做一个特殊的乒乓球task）
 
 
 ## 六、基于learning的主要研究方向
