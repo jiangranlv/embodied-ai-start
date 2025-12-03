@@ -63,7 +63,7 @@
 
 ### 1. [Intro-to-Embodied-AI](https://pku-epic.github.io/Intro2EAI_2025/schedule/)
 
-实验室内部课程，主要内容是robotics的基础概念和基于learning的robotics，源于王鹤老师《具身智能导论》，外界同学自行寻找类似课程替代
+实验室内部课程，主要内容是robotics的基础概念和基于learning的robotics，源于王鹤老师《具身智能导论》，外界同学可以学习UCB CS294-277 Robots that learn替代
 
 ### 2. [Intro-to-CV](https://pku-epic.github.io/Intro2CV_2025/schedule/)
 
